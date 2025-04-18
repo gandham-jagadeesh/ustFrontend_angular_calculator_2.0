@@ -1,0 +1,20 @@
+<div class="calculator">
+  <input
+    type="text"
+    [(ngModel)]="display"
+    class="calculator-display"
+    placeholder="0"
+    readonly
+  />
+
+  <div class="calculator-buttons">
+    <button *ngFor="let key of keys" (click)="pressKey(key.label)" [class.operator]="key.type === 'op'">
+      {{ key.label }}
+    </button>
+
+    <button class="compute-btn" (click)="calculate()">=</button>
+    <button class="clear-btn" (click)="clear()">C</button>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>
